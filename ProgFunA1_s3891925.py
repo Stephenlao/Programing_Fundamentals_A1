@@ -169,6 +169,10 @@ def place_order():
             is_member = True
 
     # Compute subtotal, applicable discount, and final amount
+    check_product_price = products[product_name]
+    if check_product_price is None:
+        print(f"Error: The product '{product_name}' does not have a price assigned. Cannot proceed with the order.")
+        return
     unit_price = products[product_name]
     subtotal = unit_price * quantity
     discount_rate = 5.0 if is_member else 0.0
